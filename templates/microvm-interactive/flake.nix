@@ -11,11 +11,9 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://cache.dechnik.net"
       "https://microvm.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "cache.dechnik.net:VM4JPWTGlfhOxnJsFk1r325lDewW44eyZ32ivqPaFJQ="
       "microvm.cachix.org-1:oXnBc6hRE3eX5rSYdRyMYXnfzcCxC7yKPTbZXALsqys="
     ];
   };
