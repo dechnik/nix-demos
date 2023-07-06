@@ -2,7 +2,7 @@
   description = "NixOS in MicroVMs";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     microvm = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -10,8 +10,14 @@
   };
 
   nixConfig = {
-    extra-substituters = [ "https://microvm.cachix.org" ];
-    extra-trusted-public-keys = [ "microvm.cachix.org-1:oXnBc6hRE3eX5rSYdRyMYXnfzcCxC7yKPTbZXALsqys=" ];
+    extra-substituters = [
+      "https://cache.dechnik.net"
+      "https://microvm.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "cache.dechnik.net:VM4JPWTGlfhOxnJsFk1r325lDewW44eyZ32ivqPaFJQ="
+      "microvm.cachix.org-1:oXnBc6hRE3eX5rSYdRyMYXnfzcCxC7yKPTbZXALsqys="
+    ];
   };
 
   outputs = { self, nixpkgs, microvm }:
@@ -75,7 +81,7 @@
                   size = 10240;
                 }
               ];
-	      writableStoreOverlay = "/nix/.rw-store";
+        writableStoreOverlay = "/nix/.rw-store";
               shares = [ {
                 # use "virtiofs" for MicroVMs that are started by systemd
                 proto = "9p";
